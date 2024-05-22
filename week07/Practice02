@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    int a, b, temp;
+    int* ptr_1;
+    int* ptr_2;
+    printf("[before]input num1 : ");
+    scanf("%d", &a);
+    printf("[before]input num2 : ");
+    scanf("%d", &b);
+
+    ptr_1 = &a; //A번
+    ptr_2 = &b; //B번
+
+    temp = *ptr_1; //C번
+    *ptr_1 = *ptr_2; //D번
+    *ptr_2 = temp; //E번
+
+    printf("[after]result num1 : %d\n", *ptr_1);
+    printf("[after]result num2 : %d\n", *ptr_2);
+
+    return 0;
+}
