@@ -1,0 +1,13 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    long long k = 0x4F4C4C4548;
+    char* p = &k;
+    for (int i = 0; i < 5; i++)
+        printf("%c", *(p + i));
+
+    return 0;
+//HELLO 출력
+}
