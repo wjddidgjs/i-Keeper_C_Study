@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+typedef struct Fluit{
+	char name[30];
+	int price;
+}Fluit;
+int main()
+{
+	Fluit member1 = { .name = "grape" };
+	Fluit* a = &member1;
+
+	a->price = 13000;
+	a->number = 1;
+
+	printf("number : %d\n", a->number);
+	printf("name : %s\n", a->name);
+	printf("price : %d\n", a->price);
+
+
+	Fluit member2 = { .price = 13000 };
+	strcpy(member2.name, "apple");
+
+	printf("name : %s\n", member2.name);
+	printf("price : %d\n", member2.price);
+
+	return 0;
+}
