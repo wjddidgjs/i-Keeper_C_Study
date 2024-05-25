@@ -1,0 +1,50 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+typedef struct Fluit //Fluit 구조체 안에 있는 price는 Price 구조체 안에 있는 price라는 주소를 가지는 문제
+{
+	char name[30];
+	int* price;
+	int number;
+}Fluit;
+
+typedef struct Price
+{
+	int price;
+}Price;
+
+int main()
+{
+	Fluit member1 = { .name = "grape" };
+	Fluit* a = &member1; //a라는 포인터 변수를 memeber1의 주소로 담음
+	Price b;
+
+	scanf("%d", &b.price);
+
+	a->price = &b; //a라는 포인터 변수 중 price가 b의 주소를 담음 (위의 구조체에서 price가 포인터 변수임을 확인)
+	a->number = 1;
+
+	printf("number : %d\n", a->number);
+	printf("name : %s\n", a->name);
+	printf("price : %d\n", *a->price);
+
+//위의 문제는 구조체가 포인터 변수라면 어떻게 풀고 구조체 안에 포인터 변수가 있으며 그 포인터 변수가 다른 구조체의 주소를 갖게 될 때 어떻게 출력하는 방법을 나타낸다
+
+	Fluit member2 = { .price = 10000 };
+
+	strcpy(member2.name, "Apple");
+	member2.number = 2;
+	member2.price = &b; //member2의 Fluit라는 구조체 안에 price가 Price라는 구조체 안에 있는 변수 b의 주소를 갖게 됨
+
+	scanf("%d", &b.price);
+	//member1.name = "grape";
+
+	printf("number : %d\n", member2.number);
+	printf("name : %s\n", member2.name);
+	printf("price : %d\n", *member2.price)
+  
+  //위의 문제는 간단하게 일반적인 구조체를 불러와서 구조체 안에 있는 포인터 변수가 다른 구조체의 주소를 갖게 될 때 어떻게 출력하는지 나타낸다
+
+	return 0;
+	
+}
